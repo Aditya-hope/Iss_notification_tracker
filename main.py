@@ -3,8 +3,9 @@ import requests
 from datetime import datetime
 import smtplib
 import time
-my_email="aditya1441behera@gmail.com"
-app_password="xtludskksznexluq"
+import os
+my_email=os.environ["ISS_EMAIL"]
+app_password=os.environ["ISS_APP_PASSWORD"]
 My_lat=20.951666
 My_long=-85.098526
 def is_iss_overhead():
@@ -34,7 +35,7 @@ def is_night():
 
 
     time_now=datetime.now().hour
-    if time_now>= sunset and time_now<= sunrise:
+    if time_now>= sunset or time_now<= sunrise:
         return True
     else:
         return False
